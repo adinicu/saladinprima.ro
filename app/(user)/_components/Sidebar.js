@@ -2,7 +2,7 @@
 import NavLink from "./NavLink";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, useDisclosure } from "@headlessui/react";
 import { PowerIcon, TrashIcon, Cog8ToothIcon, KeyIcon, TruckIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import DeleteModal from "../_components/DeleteModal";
 
@@ -13,7 +13,7 @@ function classNames(...classes) {
 export default function Sidebar() {
     const pathname = usePathname();
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-
+    
     const nav = [
         { name: 'Editeaza date', href: '/profile/editeaza-date', icon: Cog8ToothIcon, current: pathname === "/profile/editeaza-date" },
         { name: 'Schimba Parola', href: '/profile/schimba-parola', icon: KeyIcon, current: pathname === "/profile/schimba-parola" },
@@ -67,11 +67,7 @@ export default function Sidebar() {
             <Disclosure className="sm:hidden" as="nav">
                 <Disclosure.Button className="flex w-full justify-between rounded-lg bg-white px-4 py-2 text-left text-md font-medium text-gray-900 hover:text-sky-500">
                 <span>Navigheaza</span>
-                <ChevronUpIcon
-                  className={`${
-                    open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-sky-500`}
-                />
+                <ChevronUpIcon className="h-5 w-5 text-sky-500"/>
                 </Disclosure.Button>
                 <Disclosure.Panel className="bg-white mt-1 rounded-md p-2">
                     {nav.map((item) => (
