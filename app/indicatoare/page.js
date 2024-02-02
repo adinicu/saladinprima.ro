@@ -38,7 +38,7 @@ export default function Indicatoare() {
           {posts.map((post) => (
             <article key={post.id} className="flex max-w-xl flex-col p-2 bg-white shadow-sm rounded-lg items-start justify-between">
               <div className="group relative">
-                <img src={post.articleImg} alt="" className="" />
+                {/* <img src={post.articleImg} alt="" className="" /> */}
                 <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                   <a href={post.href} className="flex justify-center">
                     <span className="absolute inset-0" />

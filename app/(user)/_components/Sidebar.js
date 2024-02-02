@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Disclosure } from "@headlessui/react";
 import { PowerIcon, TrashIcon, Cog8ToothIcon, KeyIcon, TruckIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import DeleteModal from "../_components/DeleteModal";
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
