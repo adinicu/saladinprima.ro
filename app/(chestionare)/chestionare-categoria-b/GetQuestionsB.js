@@ -154,47 +154,52 @@ export default function GetQuestions() {
         <div className="text-center my-4">
           <p className="text-2xl">{questions[currentQuestion].question}</p>
         </div>
-        <RadioGroup value={selectedOption} onChange={setSelectedOption}>
-          <div className="space-y-2">
-            {questions[currentQuestion].options.map((option) => (
-              <RadioGroup.Option
-                key={option}
-                value={option}
-                className={({ active, checked }) =>
-                  `${
-                    active
-                      ? "ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300"
-                      : ""
+        <div className="flex flex-col md:flex-row md:gap-4 md:h-full">
+          <RadioGroup value={selectedOption} onChange={setSelectedOption} className="order-2 md:order-1">
+            <div className="space-y-2">
+              {questions[currentQuestion].options.map((option) => (
+                <RadioGroup.Option
+                  key={option}
+                  value={option}
+                  className={({ active, checked }) =>
+                    `${
+                      active
+                        ? "ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300"
+                        : ""
+                    }
+                    ${checked ? "bg-sky-900/75 text-white" : "bg-white"}
+                      relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none md:h-24`
                   }
-                  ${checked ? "bg-sky-900/75 text-white" : "bg-white"}
-                    relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
-                }
-              >
-                {({ active, checked }) => (
-                  <>
-                    <div className="flex w-full items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="text-sm">
-                          <RadioGroup.Label
-                            as="p"
-                            value={option}
-                            checked={selectedOption === option}
-                            onChange={() => handleOptionSelect(option)}
-                            className={`font-medium  ${
-                              checked ? "text-white" : "text-gray-900"
-                            }`}
-                          >
-                            {option}
-                          </RadioGroup.Label>
+                >
+                  {({ active, checked }) => (
+                    <>
+                      <div className="flex w-full items-center justify-between">
+                        <div className="flex items-center">
+                          <div className="text-sm">
+                            <RadioGroup.Label
+                              as="p"
+                              value={option}
+                              checked={selectedOption === option}
+                              onChange={() => handleOptionSelect(option)}
+                              className={`font-medium w-[400px] ${
+                                checked ? "text-white" : "text-gray-900"
+                              }`}
+                            >
+                              {option}
+                            </RadioGroup.Label>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                )}
-              </RadioGroup.Option>
-            ))}
+                    </>
+                  )}
+                </RadioGroup.Option>
+              ))}
+            </div>
+          </RadioGroup>
+          <div className="order-1 mb-6 md:order-2">
+            <img src={questions[currentQuestion].image} className="w-[500px]" />
           </div>
-        </RadioGroup>
+        </div>
         <div className="my-6 flex justify-between">
           <SkipButton>Raspunde mai tarziu</SkipButton>
           <SendButton onClick={handleNextQuestion} disabled={!selectedOption}>Trimite Raspunsul</SendButton>

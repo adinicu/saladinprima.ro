@@ -3,7 +3,7 @@ import NavLink from "./NavLink";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Disclosure, useDisclosure } from "@headlessui/react";
-import { PowerIcon, TrashIcon, Cog8ToothIcon, KeyIcon, TruckIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { PowerIcon, TrashIcon, Cog8ToothIcon, KeyIcon, TruckIcon, ChevronUpIcon, UserIcon } from "@heroicons/react/24/outline";
 import DeleteModal from "../_components/DeleteModal";
 
 function classNames(...classes) {
@@ -15,7 +15,8 @@ export default function Sidebar() {
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     
     const nav = [
-        { name: 'Editeaza date', href: '/profile/editeaza-date', icon: Cog8ToothIcon, current: pathname === "/profile/editeaza-date" },
+        { name: 'Profilul Meu', href: '/profile', icon: UserIcon, current: pathname === "/profile" },
+        { name: 'Editeaza Date', href: '/profile/editeaza-date', icon: Cog8ToothIcon, current: pathname === "/profile/editeaza-date" },
         { name: 'Schimba Parola', href: '/profile/schimba-parola', icon: KeyIcon, current: pathname === "/profile/schimba-parola" },
         {
             name: 'Sterge Contul',
@@ -29,10 +30,7 @@ export default function Sidebar() {
     return (
         <>
             <aside className="bg-white w-80 p-4 rounded-md shadow hidden md:block">
-                <p className="uppercase text-xs font-medium tracking-wide text-gray-500">Statistici</p>
-                <ul className="my-2">
-                    <NavLink href="/"><TruckIcon className="w-4 h-4 mr-2"/>Categoria C</NavLink>
-                </ul>
+
                 <p className="uppercase text-xs font-medium tracking-wide text-gray-500">Setari</p>
                 <ul className="my-2">
                     {nav.map((item) => (
