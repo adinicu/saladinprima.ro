@@ -8,7 +8,7 @@ import PassedQuiz from "../_components/PassedQuiz";
 
 async function getData() {
   const res = await fetch(
-    "https://adriannnicu.github.io/sdp-api/questions.json"
+    "https://adinicu.github.io/sdp-api/questions.json"
   );
 
   if (!res.ok) {
